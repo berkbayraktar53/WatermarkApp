@@ -1,0 +1,40 @@
+﻿@model Product
+@{
+    ViewData["Title"] = "Ürün Güncelle";
+}
+
+<h2 class="text-center text-info">Ürün Düzenle</h2>
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label class="control-label">Ürün Adı</label>
+                <input asp-for="ProductName" class="form-control" />
+                <span asp-validation-for="ProductName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Ürün Fiyatı</label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Ürün Stok Sayısı</label>
+                <input asp-for="Stock" class="form-control" />
+                <span asp-validation-for="Stock" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Ürün Resmi</label>
+                <input type="file" name="ImageName" class="form-control-file" />
+            </div>
+            <div class="form-group text-center">
+                <input type="submit" value="Güncelle" class="btn btn-primary" />
+                <btn class="btn btn-dark" onclick="history.back()">Geri Dön</btn>
+            </div>
+        </form>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,42 @@
+﻿@model Product
+@{
+    ViewData["Title"] = "Ürün Sil";
+}
+
+<h2 class="text-center text-info">Ürün Sil</h2>
+<h4>Ürünü silmek istediğinizden emin misiniz?</h4>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.Label("Ürün Adı :")
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ProductName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.Label("Ürün Fiyatı :")
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.Label("Ürün Stok Sayısı :")
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Stock)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.Label("Ürün Resmi :")
+        </dt>
+        <dd class = "col-sm-10">
+            <img src="~/images/@Model.ImageName" name="ImageName" height="70" width="70" />
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete" class="text-center">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Delete" class="btn btn-info" />
+        <btn class="btn btn-dark" onclick="history.back()">Geri Dön</btn>
+    </form>
+</div>

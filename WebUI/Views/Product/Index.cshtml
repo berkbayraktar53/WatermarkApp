@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Product>
+
+@{
+    ViewData["Title"] = "WatermarkApp";
+}
+
+<h2 class="text-center text-info">
+    Ürün Listesi
+    <a asp-action="Create" class="btn btn-info" style="float:left">Ürün Ekle</a>
+</h2>
+<table class="table table-bordered text-center">
+    <thead>
+        <tr>
+            <th>
+                @Html.Label("Ürün Adı")
+            </th>
+            <th>
+                @Html.Label("Ürün Fiyatı")
+            </th>
+            <th>
+                @Html.Label("Ürün Stok Sayısı")
+            </th>
+            <th>
+                @Html.Label("Ürün Resmi")
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Stock)
+                </td>
+                <td>
+                    <img src="~/images/@item.ImageName" height="30" width="30" />
+                </td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.Id">Detay</a> |
+                    <a asp-action="Edit" asp-route-id="@item.Id">Güncelle</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Sil</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
